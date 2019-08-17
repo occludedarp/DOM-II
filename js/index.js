@@ -21,6 +21,32 @@
 
 const logoHeading = document.querySelector('.nav-container .logo-heading');
 
-logoHeading.addEventListener('mouseover', (e) => {
-	console.log('it\'s working')
+const logoHeadingContainer = document.querySelector('.container .nav-container'); 
+
+// logoHeading.style.position = 'absolute';
+// logoHeadingContainer.style.position = 'relative';
+
+logoHeading.addEventListener('mouseover', () => {
+	var horPos = 0;
+	var pos = 0;
+	var intervalId = setInterval(frame, 5); //* run(this function, every 5 ms)
+	function frame() {
+	  if (pos == 300 ){
+		logoHeading.style.paddingTop = pos + 'px';
+		logoHeading.style.paddingLeft = pos + 'px';
+		// clearInterval(intervalId);
+		// pos--;
+		// logoHeading.style.paddingTop = pos + 'px';  //* set this style prop to pos
+		// logoHeading.style.paddingLeft = pos + 'px';
+	  } else {
+		pos++; 	
+		horPos+2.3;							 //* add 1 to pos
+		logoHeading.style.paddingTop = pos + 'px';  //* set this style prop to pos
+		logoHeading.style.paddingLeft = pos + 'px'; //* set this style prop to pos
+	  }
+	}
+
 })
+
+
+// const paragraphs = document.querySelectorAll(' mouseover')
