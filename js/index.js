@@ -20,33 +20,23 @@
 // * Stop the navigation items from refreshing the page by using `preventDefault()`
 
 const logoHeading = document.querySelector('.nav-container .logo-heading');
-
 const logoHeadingContainer = document.querySelector('.container .nav-container'); 
 
-// logoHeading.style.position = 'absolute';
-// logoHeadingContainer.style.position = 'relative';
+logoHeading.addEventListener('mouseover', (e) => {
 
-logoHeading.addEventListener('mouseover', () => {
-	var horPos = 0;
-	var pos = 0;
-	var intervalId = setInterval(frame, 5); //* run(this function, every 5 ms)
-	function frame() {
-	  if (pos == 300 ){
-		logoHeading.style.paddingTop = pos + 'px';
-		logoHeading.style.paddingLeft = pos + 'px';
-		// clearInterval(intervalId);
-		// pos--;
-		// logoHeading.style.paddingTop = pos + 'px';  //* set this style prop to pos
-		// logoHeading.style.paddingLeft = pos + 'px';
-	  } else {
-		pos++; 	
-		horPos+2.3;							 //* add 1 to pos
-		logoHeading.style.paddingTop = pos + 'px';  //* set this style prop to pos
-		logoHeading.style.paddingLeft = pos + 'px'; //* set this style prop to pos
-	  }
-	}
-
-})
+	TweenMax.to(e.target, 3, {x:300, ease: Bounce.easeOut});
+ })
 
 
-// const paragraphs = document.querySelectorAll(' mouseover')
+const images = document.querySelectorAll('img');
+
+images.addEventListener('mouseover', (e) => {
+	
+	TweenMax.to(e.target, .5, { rotation: -0, filter: 'blur (9px)', ease: Power1.easeIn  });
+ })
+
+
+
+
+
+
