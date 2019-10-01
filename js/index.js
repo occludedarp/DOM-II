@@ -9,33 +9,91 @@
 	//* `load` 
 	//* `focus` 
 	//* `resize` 
-	//* `scroll` 
+	//* `scroll` */
 	//* `select` 
 	//* `dblclick`
 
 //* Using the 10 unique events, find ways to update the DOM in creative ways. For example you could change colors, animate objects, remove objects, etc.
 
+const logoHeading = document.querySelector('.nav-container .logo-heading');
+
+logoHeading.addEventListener('mouseover', (e) => {
+	TweenMax.to(e.target, 3, {
+		x:200, 
+		ease: Bounce.easeOut, 
+		onComplete: () => {
+			TweenMax.to(e.target, 3, {
+				x:0, 
+				ease: Bounce.easeOut
+			})
+		}
+	});
+})
+
+
+const headingImage = document.querySelector('.intro img');
+const headingImageContainer = document.querySelector('.intro')
+
+headingImage.addEventListener('dblclick', (e) => {
+	TweenMax.from(e.target, 1.5, {
+		x:700,
+		ease: Elastic.easeOut
+	})
+})
+
+
+const imageContainers = document.querySelectorAll('.img-content')
+let imageContainersArray = Array.from(imageContainers)
+
+// document.addEventListener('scroll', () => {
+// 	TweenMax.to(image, .25, { 
+// 		scale: 1.15, 
+// 		ease: Power4.easeOut, 
+// 		onComplete: () => {
+// 			TweenMax.to(image, .5, { 
+// 				scale:1, 
+// 				ease: Power1.easeOut
+// 			})
+// 		}
+// 	});
+// })
+
+imageContainers.forEach( image => {
+	document.addEventListener('scroll', () => {
+		TweenMax.to(image, .25, { 
+			scale: 1.15, 
+			ease: Power4.easeOut, 
+			onComplete: () => {
+				TweenMax.to(image, .5, { 
+					scale:1, 
+					ease: Power1.easeOut
+				})
+			}
+		});
+	})
+
+})
+
+const paragraphText = document.querySelectorAll('h2')
+
+paragraphText.forEach( paragraphTextItem => {
+	paragraphTextItem.addEventListener("mouseenter", () => {
+	paragraphTextItem.style.transform = "scale(1.2)";
+	paragraphTextitem.style.transition = "all 1s"
+	})
+})
+
+paragraphText.forEach( paragraphTextItem => {
+	paragraphTextItem.addEventListener("mouseleave", () => {
+	paragraphTextItem.style.transform = "scale(1.0)";
+	paragraphTextitem.style.transition = "all 1s"
+	})
+})
+
+
 // * Nest two similar events somewhere in the site and prevent the event propagation properly
 
 // * Stop the navigation items from refreshing the page by using `preventDefault()`
-
-const logoHeading = document.querySelector('.nav-container .logo-heading');
-const logoHeadingContainer = document.querySelector('.container .nav-container'); 
-
-logoHeading.addEventListener('mouseover', (e) => {
-
-	TweenMax.to(e.target, 3, {x:300, ease: Bounce.easeOut});
- })
-
-
-const images = document.querySelectorAll('img');
-
-images.addEventListener('mouseover', (e) => {
-	
-	TweenMax.to(e.target, .5, { rotation: -0, filter: 'blur (9px)', ease: Power1.easeIn  });
- })
-
-
 
 
 
