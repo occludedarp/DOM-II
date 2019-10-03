@@ -32,7 +32,6 @@ logoHeading.addEventListener('mouseover', (e) => {
 
 
 const headingImage = document.querySelector('.intro img');
-const headingImageContainer = document.querySelector('.intro')
 
 headingImage.addEventListener('dblclick', (e) => {
 	TweenMax.from(e.target, 1.5, {
@@ -43,20 +42,6 @@ headingImage.addEventListener('dblclick', (e) => {
 
 
 const imageContainers = document.querySelectorAll('.img-content')
-let imageContainersArray = Array.from(imageContainers)
-
-// document.addEventListener('scroll', () => {
-// 	TweenMax.to(image, .25, { 
-// 		scale: 1.15, 
-// 		ease: Power4.easeOut, 
-// 		onComplete: () => {
-// 			TweenMax.to(image, .5, { 
-// 				scale:1, 
-// 				ease: Power1.easeOut
-// 			})
-// 		}
-// 	});
-// })
 
 imageContainers.forEach( image => {
 	document.addEventListener('scroll', () => {
@@ -73,6 +58,7 @@ imageContainers.forEach( image => {
 	})
 
 })
+
 
 const paragraphText = document.querySelectorAll('h2')
 
@@ -91,10 +77,75 @@ paragraphText.forEach( paragraphTextItem => {
 })
 
 
+const navItems = document.querySelectorAll('.nav-link')
+
+navItems.forEach( navItem => {
+	navItem.addEventListener('click', (e) => {
+		TweenMax.from(navItem, .50, {
+			y: 800,
+			ease: Elastic.easeOut
+		})
+		e.preventDefault();
+	})
+	
+})
+
+
+const allText = document.querySelectorAll('p')
+
+allText.forEach(paragraph => {
+	document.addEventListener('wheel', () => { 
+		TweenMax.to( paragraph, .25, {
+			filter: 'blur(9px)',
+			onComplete: () => {
+				TweenMax.to(paragraph, .25, { 
+					filter: 'none'
+				})
+			}
+		})
+	})
+})
+
+
+const backgroundColor = document.querySelector('html, body')
+document.addEventListener('keydown', () => {
+	backgroundColor.style.background = 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'
+})
+	
+	
+const destinationPackages = document.querySelectorAll('h4')
+
+destinationPackages.forEach( h4 => {
+	h4.addEventListener('mousedown', () => { 
+		h4.style.transform = "scale(3.0)"
+	})
+})
+
+destinationPackages.forEach( h4 => {
+	h4.addEventListener('mouseup', () => { 
+		h4.style.transform = "scale(1.0)"
+	})
+})
+
 // * Nest two similar events somewhere in the site and prevent the event propagation properly
 
+const destinationBtn = document.querySelectorAll('.btn')
+
+destinationBtn.forEach( btn => {
+	btn.addEventListener('wheel', (e) => { 
+		TweenMax.to( e.target, .25, {
+			filter: 'blur(9px)',
+			onComplete: () => {
+				TweenMax.to(e.target, .25, { 
+					filter: 'none'
+				})
+			}
+		})
+		e.stopPropagation();
+	})
+})
+
 // * Stop the navigation items from refreshing the page by using `preventDefault()`
-
-
+/* preventDwfault contained in event handler on line 88 */
 
 
